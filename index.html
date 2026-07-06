@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUELBOY — Rock Paper Scissors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="console" id="console">
+  <div class="brand-plate">
+    <span class="brand">DUELBOY</span>
+    <span class="brand-sub">HAND·TO·HAND</span>
+  </div>
+  <span class="led" id="led" aria-hidden="true"></span>
+
+  <div class="screen-bezel">
+    <div class="screen" id="screen">
+      <div class="screen-scanlines" aria-hidden="true"></div>
+
+      <!-- HOME -->
+      <div class="view active" id="view-home">
+        <div class="home-title">SELECT MODE</div>
+        <div class="menu">
+          <div class="menu-item" tabindex="0" data-go="game"><span><span class="num">1.</span> QUICK MATCH</span><span>&gt;</span></div>
+          <div class="menu-item" tabindex="0" data-go="contest"><span><span class="num">2.</span> CONTEST (10 RD)</span><span>&gt;</span></div>
+          <div class="menu-item" tabindex="0" data-go="leaderboard"><span><span class="num">3.</span> LEADERBOARD</span><span>&gt;</span></div>
+        </div>
+      </div>
+
+      <!-- QUICK MATCH -->
+      <div class="view" id="view-game">
+        <div class="hud">
+          <div class="hud-block"><span class="hud-label">P1</span><span class="hud-val" id="qPlayerScore">00</span></div>
+          <div class="hud-block"><span class="hud-label">RD</span><span class="hud-val" id="qRoundNum">01</span></div>
+          <div class="hud-block"><span class="hud-label">CPU</span><span class="hud-val" id="qCompScore">00</span></div>
+        </div>
+        <div class="battlefield">
+          <div class="fighter-col"><span class="fighter-tag">YOU</span><div class="sprite-wrap" id="qPlayerSprite"></div><span class="move-label" id="qPlayerMove">&nbsp;</span></div>
+          <div class="vs-mark">VS</div>
+          <div class="fighter-col"><span class="fighter-tag">CPU</span><div class="sprite-wrap comp" id="qCompSprite"></div><span class="move-label" id="qCompMove">&nbsp;</span></div>
+        </div>
+        <div class="message" id="qMessage">PICK A MOVE BELOW</div>
+        <div class="streak" id="qStreak">&nbsp;</div>
+      </div>
+
+      <!-- CONTEST -->
+      <div class="view" id="view-contest">
+        <div class="hud">
+          <div class="hud-block"><span class="hud-label">P1</span><span class="hud-val" id="cPlayerScore">0</span></div>
+          <div class="hud-block"><span class="hud-label">RD</span><span class="hud-val" id="cRoundNum">01/10</span></div>
+          <div class="hud-block"><span class="hud-label">CPU</span><span class="hud-val" id="cCompScore">0</span></div>
+        </div>
+        <div class="contest-bar" id="contestBar"></div>
+        <div class="battlefield">
+          <div class="fighter-col"><span class="fighter-tag">YOU</span><div class="sprite-wrap" id="cPlayerSprite"></div><span class="move-label" id="cPlayerMove">&nbsp;</span></div>
+          <div class="vs-mark">VS</div>
+          <div class="fighter-col"><span class="fighter-tag">CPU</span><div class="sprite-wrap comp" id="cCompSprite"></div><span class="move-label" id="cCompMove">&nbsp;</span></div>
+        </div>
+        <div class="message" id="cMessage">ROUND 1 OF 10 — PICK A MOVE</div>
+      </div>
+
+      <!-- LEADERBOARD -->
+      <div class="view" id="view-leaderboard">
+        <div class="lb-title">TOP CONTENDERS</div>
+        <div id="lbResultSlot"></div>
+        <ul class="lb-list" id="lbList"></ul>
+        <button class="lb-clear" id="clearData">CLEAR ALL DATA</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="dpad-group">
+      <div class="dpad" aria-hidden="true"><div class="dpad-v"></div><div class="dpad-h"></div></div>
+      <button class="home-btn" id="homeBtn" aria-label="Home menu" title="Home">&#8962;</button>
+    </div>
+    <div class="buttons" id="pickButtons">
+      <button class="btn rock" data-pick="rock" aria-label="Throw rock"><i>ROCK</i></button>
+      <button class="btn paper" data-pick="paper" aria-label="Throw paper"><i>PAPER</i></button>
+      <button class="btn scissors" data-pick="scissors" aria-label="Throw scissors"><i>SCSR</i></button>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="ticker" id="ticker" aria-label="Recent results"></div>
+    <button class="select-btn" id="reset">RESET</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
